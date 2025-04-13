@@ -1,0 +1,56 @@
+.container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  padding: 0.25rem 1.25rem 0.25rem 0.5rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.container:hover {
+  border-color: #202020cc;
+}
+
+.error:not([aria-expanded='true']) {
+  border-color: rgba(241, 28, 28, 0.726);
+  background: rgba(241, 28, 28, 0.1);
+}
+
+.icon {
+  position: absolute;
+  right: 0.25rem;
+  top: 2px;
+}
+
+.icon[data-open='true'] {
+  transform: rotate(180deg);
+}
+
+.content {
+  border: 1px solid #e0e0e0;
+}
+
+.viewport {
+  padding: 0.25rem 0;
+  max-height: 12.5rem !important;
+}
+
+.option {
+  padding: 0.5rem 1rem;
+  max-width: 20rem;
+  min-width: 10rem;
+  cursor: pointer;
+  background: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  outline: none;
+}
+
+.option:hover {
+  background: #f0f0f0;
+}
+
+.option[data-state='checked'] {
+  background: #e0e0e0;
+}

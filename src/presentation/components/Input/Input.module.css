@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 5rem;
+  width: auto;
+  height: fit-content;
+}
+
+.error input:not(:focus) {
+  border-color: rgba(241, 28, 28, 0.726);
+  background: rgba(241, 28, 28, 0.1);
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  white-space: nowrap;
+}
+.input {
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  outline: none;
+}
+
+.input:focus,
+.input:hover {
+  border-color: #202020cc;
+}
