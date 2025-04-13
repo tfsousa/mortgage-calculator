@@ -24,7 +24,11 @@ export const Input = ({
 }: Props) => {
   const context = useFormContext();
 
-  const classes = clsx(styles.container, className, { [styles.error]: error });
+  const hasError = error || context?.formState.errors[name];
+
+  const classes = clsx(styles.container, className, {
+    [styles.error]: hasError,
+  });
 
   const sign = useMemo(() => {
     if (format === 'currency') return '$';

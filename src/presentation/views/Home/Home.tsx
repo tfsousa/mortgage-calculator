@@ -1,31 +1,25 @@
 import { Input, Select } from '~/presentation/components';
 import styles from './Home.module.css';
 import { Form, FormProvider, useForm } from 'react-hook-form';
+import { CalculatorSchema } from '~/presentation/validation/form-validation';
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  AMORTIZATION_OPTIONS,
+  SCHEDULE_OPTIONS,
+} from '~/domain/calculator-models';
 
 type FormValues = {
-  propertyPrice: number;
-  downPayment: number;
-  annualInterestRate: number;
-  amortizationPeriod: number;
-  paymentSchedule: string;
+  propertyPrice: string;
+  downPayment: string;
+  interest: string;
+  amortization: '5' | '10' | '15' | '20' | '25' | '30';
+  schedule: 'accelerated_bi_weekly' | 'bi_weekly' | 'monthly';
 };
 
-const AMORTIZATION_OPTIONS = [
-  { label: '5 years', value: 5 },
-  { label: '10 years', value: 10 },
-  { label: '15 years', value: 15 },
-  { label: '20 years', value: 20 },
-  { label: '25 years', value: 25 },
-  { label: '30 years', value: 30 },
-];
-const SCHEDULE_OPTIONS = [
-  { label: 'Accelerated Bi-weekly', value: 'accelerated_bi_weekly' },
-  { label: 'Bi-weekly', value: 'bi_weekly' },
-  { label: 'Monthly', value: 'monthly' },
-];
-
 export const Home = () => {
-  const methods = useForm<FormValues>({});
+  const methods = useForm<FormValues>({
+    resolver: zodResolver(CalculatorSchema),
+  });
 
   const onSubmit = (data: any) => {
     console.log(data);

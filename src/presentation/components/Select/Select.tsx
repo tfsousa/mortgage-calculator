@@ -41,18 +41,33 @@ export const Select = ({
 
   const context = useFormContext();
 
-  const classes = clsx(styles.container, className, { [styles.error]: error });
+  const hasError = error || context?.formState.errors[name];
 
-  const { watch, setValue } = context ?? {};
+  const classes = clsx(styles.container, className, {
+    [styles.error]: hasError,
+  });
+
+  const { watch, setValue, control } = context ?? {};
+  const { ref } = control?.register?.(name) ?? {};
 
   const value = watch?.(name) ?? '';
 
   const handleChange = (value: string | number) => {
     setValue(name, value);
+    context?.trigger(name);
+  };
+
+  const handleOpenChange = (isOpen: boolean) => {
+    setOpen(isOpen);
   };
 
   return (
-    <Root open={open} onOpenChange={setOpen} onValueChange={handleChange}>
+    <Root
+      open={open}
+      onOpenChange={handleOpenChange}
+      onValueChange={handleChange}
+    >
+      <input type="hidden" ref={ref} name={name} value={value} />
       <Trigger className={classes} value={value}>
         <Value placeholder={placeholder} />
         <Icon className={styles.icon} data-open={open} />
