@@ -1,0 +1,29 @@
+{
+  "name": "mortgage-calculator",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "api",
+    "app"
+  ],
+  "scripts": {
+    "build:api": "yarn workspace api build",
+    "start:api": "yarn workspace api start",
+    "dev:api": "yarn workspace api dev",
+    "build:app": "yarn workspace app build",
+    "start:app": "yarn workspace app serve",
+    "dev:app": "yarn workspace app dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tfsousa/mortgage-calculator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tfsousa/mortgage-calculator/issues"
+  },
+  "homepage": "https://github.com/tfsousa/mortgage-calculator#readme",
+  "description": ""
+}

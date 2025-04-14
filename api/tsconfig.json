@@ -9,13 +9,13 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "baseUrl": "src",
-    "paths": {
-      "~/application/*": ["application/*"],
-      "~/domain/*": ["domain/*"],
-      "~/infra/*": ["infra/*"],
-      "~/main/*": ["main/*"],
-      "~/presentation/*": ["presentation/*"]
-    }
+    // "paths": {
+    //   "~/application/*": ["application/*"],
+    //   "~/domain/*": ["domain/*"],
+    //   "~/infra/*": ["infra/*"],
+    //   "~/main/*": ["main/*"],
+    //   "~/presentation/*": ["presentation/*"]
+    // }
   },
   "include": ["src"],
   "exclude": ["node_modules"]
