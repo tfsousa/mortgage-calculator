@@ -8,7 +8,7 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "baseUrl": "src",
+    "baseUrl": "src"
     // "paths": {
     //   "~/application/*": ["application/*"],
     //   "~/domain/*": ["domain/*"],
