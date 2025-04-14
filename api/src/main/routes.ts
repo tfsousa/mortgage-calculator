@@ -5,7 +5,7 @@ export const setRoutes = (app: Application): void => {
   const controller = new Controller();
 
   app.get('/', controller.root.bind(controller));
-  app.get(
+  app.post(
     '/mortgage-calculation',
     controller.mortgageCalculation.bind(controller)
   );

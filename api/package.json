@@ -10,7 +10,8 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/main/index.js",
-    "dev": "node --loader ts-node/esm --experimental-specifier-resolution=node --no-warnings -r tsconfig-paths/register src/main/index.ts",
+    "dev": "nodemon --watch src --ext ts --exec 'node --loader ts-node/esm --experimental-specifier-resolution=node src/main/index.ts'",
+    "test": "node --loader ts-node/esm --experimental-specifier-resolution=node --test src/tests/**/*.test.ts",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "clean": "rm -rf dist",
@@ -24,9 +25,10 @@
     "@typescript-eslint/eslint-plugin": "^8.29.1",
     "@typescript-eslint/parser": "^8.29.1",
     "eslint": "^9.24.0",
+    "nodemon": "^3.1.9",
     "prettier": "^3.5.3",
+    "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
-    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.3"
   }
 }

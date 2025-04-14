@@ -2,33 +2,36 @@ import { Request, Response } from 'express';
 import { MortgageCalculationService } from './mortgage-calculation-service';
 
 export class Controller {
-  root(req: Request, res: Response) {
+  root(req: Request, res: Response): void {
     res.send('Success!');
   }
+
   mortgageCalculation(
     req: Request<{}, {}, MortgageCalculationService.Params>,
-    res: Response
-  ) {
+    res: Response<MortgageCalculationService.Response>
+  ): void {
     try {
       const params = req.body;
 
-      console.log(JSON.stringify(params, null, 2));
+      if (
+        !params.amortization ||
+        !params.downPayment ||
+        !params.interest ||
+        !params.propertyPrice ||
+        !params.schedule
+      ) {
+        res.status(400).send({ error: 'Missing required parameters' });
+        return;
+      }
 
-      // Validate the parameters
-      // if (!params.loanAmount || !params.interestRate || !params.loanTerm) {
-      //   return res.status(400).send({ error: "Missing required parameters" });
-      // }
+      const result = MortgageCalculationService.calculate(params);
+      if (result.error) {
+        res.status(400).send(result);
+        return;
+      }
 
-      // Call the service with the extracted parameters
-      // const result = MortgageCalculationService.calculate(params);
-
-      // Send the result back to the client
-      // res.status(200).send(result);
-      res.status(200).send({
-        message: 'Mortgage calculation successful',
-      });
+      res.status(200).send(result);
     } catch (error) {
-      // Handle any errors
       console.error(error);
       res.status(500).send({ error: 'Internal Server Error' });
     }
